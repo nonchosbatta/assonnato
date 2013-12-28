@@ -3,7 +3,7 @@ require 'assonnato'
 
 describe 'Assonnato' do
   before do
-    @show = Assonnato::Show.new 'http://localhost:4567', :json
+    @show = Assonnato::Show.new 'http://localhost:4567'
   end
 
   it 'returns all the shows' do

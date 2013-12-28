@@ -10,25 +10,24 @@
 
 module Assonnato
   class Show
-    attr_accessor :host, :format
+    attr_accessor :host
     include Request
     include Parser
 
-    def initialize(host, format = :json)
+    def initialize(host)
       @host   = host
-      @format = format
     end
 
     def all!
-      parse get(@host, "/shows/all.#{@format}"), @format
+      parse get(@host, "/shows/all")
     end
 
     def search!(keyword)
-      parse get(@host, "/shows/search/#{URI.escape keyword}.#{@format}"), @format
+      parse get(@host, "/shows/search/#{URI.escape keyword}")
     end
 
     def get!(show)
-      parse get(@host, "/shows/get/#{URI.escape show}.#{@format}"), @format
+      parse get(@host, "/shows/get/#{URI.escape show}")
     end
   end
 end

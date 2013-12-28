@@ -11,7 +11,7 @@
 module Assonnato
   module Parser
 
-    def parse(what, format)
+    def parse(what, format = :json)
       collection = case format.to_sym
         when :json             then JSON.parse what
         when :xml, :csv, :yaml then raise NotImplementedError, 'the support for XML, CSV or YAML data is not supported yet'
