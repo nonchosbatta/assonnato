@@ -11,15 +11,7 @@
 module Assonnato
   class Episode < Show
     def all!(show)
-      parse get(@host, "/shows/get/#{URI.escape show}/episodes/list")
-    end
-
-    def search!(keyword)
-      raise NotImplementedError, 'you can search only the shows'
-    end
-
-    def get!(show, episode)
-      parse get(@host, "/shows/get/#{URI.escape show}/episodes/get/#{episode}")
+      parse get(@host, "/shows/get/#{URI.escape show}/episodes/all")
     end
   end
 end

@@ -13,18 +13,4 @@ describe 'Assonnato' do
     res.first.should             be_kind_of(Struct)
     res.first.episode.should     eql(1)
   end
-
-  it 'can\'t search episodes' do
-    expect {
-      @episode.search!('monogatari')
-    }.to raise_error(NotImplementedError)
-  end
-
-  it 'returns a specific episode of the given show' do
-    res = @episode.get! 'Monogatari Second Series', 1
-    res.should                   be_kind_of(Array)
-    res.should_not               be_empty
-    res.first.should             be_kind_of(Struct)
-    res.first.episode.should     eql(1)
-  end
 end
