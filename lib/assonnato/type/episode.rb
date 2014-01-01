@@ -11,7 +11,7 @@
 module Assonnato
   class Episode < Show
     def all!(show)
-      parse get(@host, "/shows/get/#{URI.escape show}/episodes/list")
+      parse get(@host, "/shows/get/#{URI.escape show}/episodes/all")
     end
 
     def search!(keyword)
@@ -19,7 +19,7 @@ module Assonnato
     end
 
     def get!(show, episode)
-      parse get(@host, "/shows/get/#{URI.escape show}/episodes/get/#{episode}")
+      all!(show).select { |ep| ep.id == episode }
     end
   end
 end
