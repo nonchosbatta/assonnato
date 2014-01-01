@@ -13,5 +13,13 @@ module Assonnato
     def all!(show)
       parse get(@host, "/shows/get/#{URI.escape show}/episodes/all")
     end
+
+    def search!(keyword)
+      raise NotImplementedError, 'you can search only the shows'
+    end
+
+    def get!(show, episode)
+      all!(show).select { |ep| ep.id == episode }
+    end
   end
 end
