@@ -15,11 +15,11 @@ module Assonnato
     include Parser
 
     def initialize(host)
-      @host   = host
+      @host = host
     end
 
     def all!
-      parse get(@host, "/shows/all")
+      parse get(@host, '/shows/all')
     end
 
     def search!(keyword)
