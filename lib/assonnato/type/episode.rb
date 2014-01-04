@@ -19,7 +19,7 @@ module Assonnato
     end
 
     def get!(show, episode)
-      all!(show).select { |ep| ep.id == episode }
+      all!(show).select { |ep| ep.episode == episode }
     end
   end
 end
