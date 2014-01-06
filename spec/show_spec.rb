@@ -19,7 +19,7 @@ describe 'Assonnato' do
     res.should                   be_kind_of(Array)
     res.should_not               be_empty
     res.first.should             be_kind_of(Struct)
-    res.first.fansub.sould       eql('Omnivium')
+    res.first.fansub.should      eql('Omnivium')
   end
 
   it 'search all the shows which name is similar to the given keyword' do

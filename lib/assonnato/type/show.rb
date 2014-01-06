@@ -10,20 +10,21 @@
 
 module Assonnato
   class Show
-    attr_accessor :host
+    attr_accessor :host, :path
     include Request
     include Parser
 
-    def initialize(host)
+    def initialize(host, path = nil)
       @host = host
+      @path = path || '/api/v1'
     end
 
     def all!(status = :ongoing, fansub = '')
-      parse get(@host, '/api/v1', "/shows/all/#{status}/#{fansub}")
+      parse get(@host, @path, "/shows/all/#{status}/#{fansub}")
     end
 
     def search!(keyword)
-      parse get(@host, '/api/v1', "/shows/search/#{URI.escape keyword}")
+      parse get(@host, @path, "/shows/search/#{URI.escape keyword}")
     end
 
     def get!(show_name)

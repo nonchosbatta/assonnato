@@ -10,13 +10,13 @@
 
 module Assonnato
   module Request
-    def get(host, path)
-      uri = URI.join(host, path[1..-1])
+    def get(host, base_path, path)
+      uri = URI.parse "#{host}#{base_path}#{path}"
       request :get, uri
     end
 
-    def post(host, path, params = {})
-      uri = URI.join(host, path[1..-1])
+    def post(host, base_path, path, params = {})
+      uri = URI.parse "#{host}#{base_path}#{path}"
       request :post, uri, params
     end
 

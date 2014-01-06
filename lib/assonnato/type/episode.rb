@@ -11,7 +11,7 @@
 module Assonnato
   class Episode < Show
     def all!(show)
-      parse get(@host, '/api/v1', "/episodes/#{URI.escape show}")
+      parse get(@host, @path, "/episodes/#{URI.escape show}")
     end
 
     def search!(keyword)
