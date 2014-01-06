@@ -16,7 +16,7 @@ describe 'Assonnato' do
 
   it 'can\'t search episodes' do
     expect {
-      @episode.search!('Strikederp')
+      @episode.search!('le_too_derp')
     }.to raise_error(NotImplementedError)
   end
 

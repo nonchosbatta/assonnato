@@ -6,12 +6,20 @@ describe 'Assonnato' do
     @show = Assonnato::Show.new 'http://pigro.omnivium.it:4567'
   end
 
-  it 'returns all the shows' do
-    res = @show.all!
+  it 'returns all the ongoing shows' do
+    res = @show.all! :ongoing
     res.should                   be_kind_of(Array)
     res.should_not               be_empty
     res.first.should             be_kind_of(Struct)
-    res.first.name.length.should > 5
+    res.first.status.should      eql('ongoing')
+  end
+
+  it 'returns all the ongoing shows of the given fansub' do
+    res = @show.all! :ongoing, 'Omnivium'
+    res.should                   be_kind_of(Array)
+    res.should_not               be_empty
+    res.first.should             be_kind_of(Struct)
+    res.first.fansub.should      eql('Omnivium')
   end
 
   it 'search all the shows which name is similar to the given keyword' do
@@ -23,7 +31,7 @@ describe 'Assonnato' do
   end
 
   it 'doesn\'t get an unknown show' do
-    res = @show.search! 'Strikederp'
+    res = @show.search! 'le_too_derp'
     res.should                   be_kind_of(Array)
     res.should                   be_empty
   end
