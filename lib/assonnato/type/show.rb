@@ -18,16 +18,18 @@ module Assonnato
       @host = host
     end
 
-    def all!
-      parse get(@host, '/shows/all')
+    def all!(status = :ongoing, fansub = '')
+      parse get(@host, '/api/v1', "/shows/all/#{status}/#{fansub}")
     end
 
     def search!(keyword)
-      parse get(@host, "/shows/search/#{URI.escape keyword}")
+      parse get(@host, '/api/v1', "/shows/search/#{URI.escape keyword}")
     end
 
-    def get!(show)
-      parse get(@host, "/shows/get/#{URI.escape show}")
+    def get!(show_name)
+      search!(show_name).select { |show|
+        show.name == show_name
+      }
     end
   end
 end

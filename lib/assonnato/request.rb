@@ -11,12 +11,12 @@
 module Assonnato
   module Request
     def get(host, path)
-      uri = URI.join(host, '/api/', path[1..-1])
+      uri = URI.join(host, path[1..-1])
       request :get, uri
     end
 
     def post(host, path, params = {})
-      uri = URI.join(host, '/api/', path[1..-1])
+      uri = URI.join(host, path[1..-1])
       request :post, uri, params
     end
 
