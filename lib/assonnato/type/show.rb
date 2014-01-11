@@ -22,12 +22,12 @@ module Assonnato
     def all!(status = :ongoing, options = {})
       filters = ''.tap { |str|
         if options.has_key?    :fansub
-          str += by_fansub options[:fansub]
+          str << by_fansub(options[:fansub])
         elsif options.has_key? :user
           if options.has_key?  :role
-            str += by_role  options[:user], options[:role]
+            str << by_role(options[:user], options[:role])
           else
-            str += by_staff options[:user]
+            str << by_staff(options[:user])
           end
         end
       }
@@ -47,17 +47,17 @@ module Assonnato
 
     private
     def by_fansub(fansub)
-      "/fansubs/#{fansub}"
+      "/fansubs/#{URI.escape fansub}"
     end
 
     private
     def by_staff(user)
-      "/users/#{user}"
+      "/users/#{URI.escape user}"
     end
 
     private
     def by_role(user, role)
-      "/users/#{user}/#{role}"
+      "/users/#{URI.escape user}/#{role}"
     end
   end
 end
