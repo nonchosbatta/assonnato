@@ -19,8 +19,20 @@ module Assonnato
       @path = path || '/api/v1'
     end
 
-    def all!(status = :ongoing, fansub = '')
-      parse get(@host, @path, "/shows/all/#{status}/#{fansub}")
+    def all!(status = :ongoing, options = {})
+      filters = ''.tap { |str|
+        if options.has_key?    :fansub
+          str += by_fansub options[:fansub]
+        elsif options.has_key? :user
+          if options.has_key?  :role
+            str += by_role  options[:user], options[:role]
+          else
+            str += by_staff options[:user]
+          end
+        end
+      }
+
+      parse get(@host, @path, "#{filters}/shows/all/#{status}")
     end
 
     def search!(keyword)
@@ -31,6 +43,21 @@ module Assonnato
       search!(show_name).select { |show|
         show.name == show_name
       }
+    end
+
+    private
+    def by_fansub(fansub)
+      "/fansubs/#{fansub}"
+    end
+
+    private
+    def by_staff(user)
+      "/users/#{user}"
+    end
+
+    private
+    def by_role(user, role)
+      "/users/#{user}/#{role}"
     end
   end
 end
