@@ -27,4 +27,11 @@ describe 'Assonnato' do
     res.first.should          be_kind_of(Struct)
     res.first.episode.should  eql(1)
   end
+
+  it 'returns the last episode of each show with the given status' do
+    res = @episode.last! :ongoing
+    res.should                be_kind_of(Array)
+    res.should_not            be_empty
+    res.first.should          be_kind_of(Struct)
+  end
 end
