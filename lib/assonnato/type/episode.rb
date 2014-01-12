@@ -21,5 +21,9 @@ module Assonnato
     def get!(show, episode)
       all!(show).select { |ep| ep.episode == episode }
     end
+
+    def last!(status)
+      parse get(@host, @path, "/episodes/last/#{status}")
+    end
   end
 end

@@ -45,6 +45,10 @@ module Assonnato
       }
     end
 
+    def last!(status)
+      raise NotImplementedError, 'Show#last is not implemented'
+    end
+
     private
     def by_fansub(fansub)
       "/fansubs/#{URI.escape fansub}"
