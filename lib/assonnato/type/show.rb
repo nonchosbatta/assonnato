@@ -14,8 +14,8 @@ module Assonnato
     include Request
     include Parser
 
-    def initialize(host, path = nil)
-      @host = host
+    def initialize(host = nil, path = nil)
+      @host = host || 'http://pigro.omnivium.it'
       @path = path || '/api/v1'
     end
 
