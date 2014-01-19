@@ -3,7 +3,7 @@ require 'assonnato'
 
 describe 'Assonnato' do
   before do
-    @show = Assonnato::Show.new 'http://pigro.omnivium.it:4567'
+    @show = Assonnato::Show.new
   end
 
   it 'returns all the ongoing shows' do

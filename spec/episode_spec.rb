@@ -3,7 +3,7 @@ require 'assonnato'
 
 describe 'Assonnato' do
   before do
-    @episode = Assonnato::Episode.new 'http://pigro.omnivium.it:4567'
+    @episode = Assonnato::Episode.new 'http://pigro.omnivium.it'
   end
 
   it 'returns all the episodes of the given show' do
