@@ -1,21 +1,23 @@
 #--
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#                    Version 2, December 2004
+# Copyright (c) 2014 Giovanni Capuano <webmaster@giovannicapuano.net>
 #
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-#
-#  0. You just DO WHAT THE FUCK YOU WANT TO.
+# Released under the MIT License
+# http://opensource.org/licenses/MIT
 #++
 
 require 'uri'
 require 'net/http'
 require 'json'
 
-require 'assonnato/exception'
+require 'assonnato/assonnato'
+require 'assonnato/api_factory'
+require 'assonnato/cookie_jar'
 require 'assonnato/request'
 require 'assonnato/parser'
-require 'assonnato/type/show'
-require 'assonnato/type/episode'
-require 'assonnato/assonnato'
+
+require 'assonnato/client'
+require 'assonnato/api/user'
+require 'assonnato/api/show'
+require 'assonnato/api/episode'
+
 require 'assonnato/version'

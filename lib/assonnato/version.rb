@@ -1,13 +1,12 @@
 #--
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#                    Version 2, December 2004
+# Copyright (c) 2014 Giovanni Capuano <webmaster@giovannicapuano.net>
 #
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-#
-#  0. You just DO WHAT THE FUCK YOU WANT TO.
+# Released under the MIT License
+# http://opensource.org/licenses/MIT
 #++
 
 module Assonnato
-  VERSION = '0.7'
+
+VERSION = '0.8'
+
 end

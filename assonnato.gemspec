@@ -7,15 +7,13 @@ Gem::Specification.new { |s|
   s.email         = 'webmaster@giovannicapuano.net'
   s.homepage      = 'http://www.giovannicapuano.net'
   s.platform      = Gem::Platform::RUBY
-  s.summary       = 'RESTful gem wrapping pigro\'s APIs'
-  s.description   = 'RESTful wrapper gem for pigro\'s APIs'
-  s.licenses      = 'WTFPL'
+  s.summary       = 'RESTful gem for wrapping Pigro\'s APIs'
+  s.description   = 'RESTful wrapper gem for Pigro\'s APIs'
+  s.licenses      = 'MIT'
 
   s.require_paths = ['lib']
   s.files         = Dir.glob('lib/**/*.rb')
   s.test_files    = Dir.glob('spec/**/*_spec.rb')
-
-  s.add_dependency 'json'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'

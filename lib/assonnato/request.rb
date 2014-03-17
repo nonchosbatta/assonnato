@@ -1,43 +1,41 @@
 #--
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#                    Version 2, December 2004
+# Copyright (c) 2014 Giovanni Capuano <webmaster@giovannicapuano.net>
 #
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-#
-#  0. You just DO WHAT THE FUCK YOU WANT TO.
+# Released under the MIT License
+# http://opensource.org/licenses/MIT
 #++
 
 module Assonnato
-  module Request
-    def get(host, base_path, path)
-      uri = URI.parse "#{host}#{base_path}#{path}"
-      request :get, uri
-    end
+  
+module Request
+  def get(path, headers = {})
+    request :get,  path, {}, headers
+  end
 
-    def post(host, base_path, path, params = {})
-      uri = URI.parse "#{host}#{base_path}#{path}"
-      request :post, uri, params
-    end
+  def post(path, data = {}, headers = {})
+    request :post, path, data, headers
+  end
 
-    private
-    def request(method, url, params = {})
-      uri = URI url
-      ssl = uri.scheme == 'https'
+  private
+  def request(method, path, data, headers)
+    headers['Cookie'] = @cookies.get
 
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: ssl) do |http|
-        request = case method.to_sym
-          when :get
-            Net::HTTP::Get.new uri
-          when :post
-            Net::HTTP.post_form uri, params
-          else
-            raise ArgumentError, 'format not recognized'
-        end
-        response = http.request request
-        raise ResourceNotFound unless response.body
-        response.body
+    Net::HTTP.start(@host, @port, use_ssl: @ssl) do |http|
+      resp = case method.to_sym
+        when :get
+          http.get  path, headers
+        when :post
+          data = URI.encode_www_form data
+          headers['Content-Type'] = 'application/x-www-form-urlencoded'
+
+          http.post path, data, headers
+        else raise ArgumentError, 'format not recognized'
       end
+
+      @cookies << resp.response['set-cookie'].split('; ')[0] rescue @cookies.get
+      JSON.parse resp.body
     end
   end
+end
+
 end
