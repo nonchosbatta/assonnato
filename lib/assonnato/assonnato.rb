@@ -1,11 +1,26 @@
 #--
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#                    Version 2, December 2004
+# Copyright (c) 2011 Peter Murach
+# Copyright (c) 2014 Giovanni Capuano <webmaster@giovannicapuano.net>
 #
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-#
-#  0. You just DO WHAT THE FUCK YOU WANT TO.
+# Released under the MIT License
+# http://opensource.org/licenses/MIT
 #++
 
-module Assonnato; end
+module Assonnato
+
+class << self
+  def new(domain, port = 80, ssl = false)
+    Client.new domain, port, ssl
+  end
+
+  def method_missing(method, *args, &block)
+    return super unless new.respond_to?(method)
+    new.send method, *args, &block
+  end
+
+  def respond_to?(method, include_private = false)
+    new.respond_to?(method, include_private) || super(method, include_private)
+  end
+end
+
+end
