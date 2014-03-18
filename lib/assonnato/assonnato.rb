@@ -9,8 +9,8 @@
 module Assonnato
 
 class << self
-  def new(domain, port = 80, ssl = false)
-    Client.new domain, port, ssl
+  def new(host = 'pigro.omnivium.it', port = 80, ssl = false)
+    Client.new host, port, ssl
   end
 
   def method_missing(method, *args, &block)
