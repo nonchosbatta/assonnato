@@ -19,7 +19,7 @@ user      = Assonnato::User.new assonnato
 user.login 'Username', 'Password'
 ```
 
-... while the second is performing direct calls to *Assonnato* using *pigro.omnivium.it*.
+... while the second is performing direct calls to *Assonnato* fetching data from *pigro.omnivium.it*.
 ```ruby
 require 'assonnato'
 
