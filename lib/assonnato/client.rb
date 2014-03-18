@@ -13,7 +13,7 @@ class Client
   attr_accessor :host, :port
   attr_reader   :cookies
 
-  def initialize(host, port = 80, ssl = false)
+  def initialize(host = 'pigro.omnivium.it', port = 80, ssl = false)
     @host    = host
     @port    = port
     @ssl     = ssl

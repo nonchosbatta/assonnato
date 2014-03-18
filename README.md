@@ -19,12 +19,11 @@ user      = Assonnato::User.new assonnato
 user.login 'Username', 'Password'
 ```
 
-... while the second is performing direct calls to *Assonnato*.
+... while the second is performing direct calls to *Assonnato* using *pigro.omnivium.it*.
 ```ruby
 require 'assonnato'
 
-assonnato = Assonnato.new HOST, PORT, SSL
-assonnato.user.login      'Username', 'Password'
+assonnato.user.login 'Username', 'Password'
 ```
 
 Examples
@@ -57,5 +56,3 @@ puts "#{episode['status']}: #{episode['message']}"
 logout = assonnato.user.logout
 puts "#{logout['status']}: #{logout['message']}"
 ```
-
-A working example is also available [here](https://github.com/RoxasShadow/Descartes/blob/master/lib/descartes/modules/pigro.rb).
