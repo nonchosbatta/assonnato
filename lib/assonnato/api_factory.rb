@@ -1,5 +1,4 @@
 #--
-# Copyright (c) 2011 Peter Murach
 # Copyright (c) 2014 Giovanni Capuano <webmaster@giovannicapuano.net>
 #
 # Released under the MIT License
