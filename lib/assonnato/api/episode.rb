@@ -9,7 +9,7 @@ module Assonnato
 
 class Episode
   include Parser
-  
+
   def initialize(client)
     @client = client
   end
@@ -30,10 +30,17 @@ class Episode
     raise NotImplementedError, 'you cannot search episodes'
   end
 
+  def add(name, episode, fields)
+    path = '/api/v1/episode/add'
+    data = { name: name, episode: episode, _csrf: @client.user.csrf_token }.merge fields
+
+    @client.post path, data
+  end
+
   def edit(name, episode, fields)
     path = '/api/v1/episode/edit'
     data = { name: name, episode: episode, _csrf: @client.user.csrf_token }.merge fields
-    
+
     @client.post path, data
   end
 end
