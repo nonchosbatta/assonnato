@@ -13,7 +13,7 @@ describe Assonnato::Show do
   end
 
   it 'search all the shows which name is similar to given keyword' do
-    res = client.search         'strike'
+    res = client.search         'Strike'
     res.should                   be_kind_of(Array)
     res.should_not               be_empty
     res.first.should             be_kind_of(Struct)
